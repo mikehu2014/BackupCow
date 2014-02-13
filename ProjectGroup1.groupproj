@@ -1,0 +1,72 @@
+﻿	<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+		<PropertyGroup>
+			<ProjectGuid>{686C1AAA-8BEF-4D24-AAC6-FCC68A39D18D}</ProjectGuid>
+		</PropertyGroup>
+		<ItemGroup>
+			<Projects Include="BackupCow.dproj">
+				<Dependencies/>
+			</Projects>
+			<Projects Include="..\TestTcpErrorStr\Project13.dproj">
+				<Dependencies/>
+			</Projects>
+			<Projects Include="..\FileCloud\FileCloud.dproj">
+				<Dependencies/>
+			</Projects>
+			<Projects Include="..\FileCloud Fm\FileCloudLite.dproj">
+				<Dependencies/>
+			</Projects>
+		</ItemGroup>
+		<ProjectExtensions>
+			<Borland.Personality>Default.Personality.12</Borland.Personality>
+			<Borland.ProjectType/>
+			<BorlandProject>
+				<Default.Personality/>
+			</BorlandProject>
+		</ProjectExtensions>
+		<Target Name="BackupCow">
+			<MSBuild Projects="BackupCow.dproj"/>
+		</Target>
+		<Target Name="BackupCow:Clean">
+			<MSBuild Projects="BackupCow.dproj" Targets="Clean"/>
+		</Target>
+		<Target Name="BackupCow:Make">
+			<MSBuild Projects="BackupCow.dproj" Targets="Make"/>
+		</Target>
+		<Target Name="Project13">
+			<MSBuild Projects="..\TestTcpErrorStr\Project13.dproj"/>
+		</Target>
+		<Target Name="Project13:Clean">
+			<MSBuild Projects="..\TestTcpErrorStr\Project13.dproj" Targets="Clean"/>
+		</Target>
+		<Target Name="Project13:Make">
+			<MSBuild Projects="..\TestTcpErrorStr\Project13.dproj" Targets="Make"/>
+		</Target>
+		<Target Name="FileCloud">
+			<MSBuild Projects="..\FileCloud\FileCloud.dproj"/>
+		</Target>
+		<Target Name="FileCloud:Clean">
+			<MSBuild Projects="..\FileCloud\FileCloud.dproj" Targets="Clean"/>
+		</Target>
+		<Target Name="FileCloud:Make">
+			<MSBuild Projects="..\FileCloud\FileCloud.dproj" Targets="Make"/>
+		</Target>
+		<Target Name="FileCloudLite">
+			<MSBuild Projects="..\FileCloud Fm\FileCloudLite.dproj"/>
+		</Target>
+		<Target Name="FileCloudLite:Clean">
+			<MSBuild Projects="..\FileCloud Fm\FileCloudLite.dproj" Targets="Clean"/>
+		</Target>
+		<Target Name="FileCloudLite:Make">
+			<MSBuild Projects="..\FileCloud Fm\FileCloudLite.dproj" Targets="Make"/>
+		</Target>
+		<Target Name="Build">
+			<CallTarget Targets="BackupCow;Project13;FileCloud;FileCloudLite"/>
+		</Target>
+		<Target Name="Clean">
+			<CallTarget Targets="BackupCow:Clean;Project13:Clean;FileCloud:Clean;FileCloudLite:Clean"/>
+		</Target>
+		<Target Name="Make">
+			<CallTarget Targets="BackupCow:Make;Project13:Make;FileCloud:Make;FileCloudLite:Make"/>
+		</Target>
+		<Import Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')" Project="$(BDS)\Bin\CodeGear.Group.Targets"/>
+	</Project>
